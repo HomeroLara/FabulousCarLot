@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="FabulousCarLot.Mobile.Views.VehicleDetailView">
+
+    <ContentPage.Content>
+        <Grid
+            Margin="10"
+            VerticalOptions="StartAndExpand"
+            HorizontalOptions="CenterAndExpand">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="2*"/>
+            </Grid.ColumnDefinitions>
+
+            <ActivityIndicator
+                Grid.Row="4"
+                Grid.Column="1"
+                IsRunning="{Binding IsBusy}"
+                IsVisible="{Binding IsBusy}"
+                HeightRequest="50"
+                WidthRequest="50"
+                Color="Red"/>
+
+
+            <Image 
+                Grid.Row="0"
+                Grid.Column="0"
+                Grid.RowSpan="5"
+                Source="{Binding SelectedVehicle.ImageUrl}"
+                VerticalOptions="StartAndExpand"
+                WidthRequest="200"
+                HeightRequest="200"/>
+
+            <Label 
+                Grid.Row="0"
+                Grid.Column="1"
+                HorizontalOptions="StartAndExpand"
+                VerticalOptions="CenterAndExpand"
+                Text="{Binding SelectedVehicle.Price, StringFormat='Price: {0:C}'}"/>
+
+            <Label 
+                Grid.Row="1"
+                Grid.Column="1"
+                HorizontalOptions="StartAndExpand"
+                VerticalOptions="CenterAndExpand"
+                Text="{Binding SelectedVehicle.Make, StringFormat='Make: {0}'}"/>
+
+            <Label 
+                Grid.Row="2"
+                Grid.Column="1"
+                HorizontalOptions="StartAndExpand"
+                VerticalOptions="CenterAndExpand"
+                Text="{Binding VehicleOptions, StringFormat='Options: {0}' }"/>
+
+
+            <Label 
+                Grid.Row="3"
+                Grid.Column="1"
+                HorizontalOptions="StartAndExpand"
+                VerticalOptions="CenterAndExpand"
+                Text="{Binding SelectedVehicle.Color, StringFormat='Color: {0}' }"/>
+
+            <Label 
+                Grid.Row="4"
+                Grid.Column="1"
+                HorizontalOptions="StartAndExpand"
+                VerticalOptions="CenterAndExpand"
+                Text="{Binding SelectedVehicle.Description, StringFormat='Description: {0}' }"/>
+
+            <Button
+                Grid.Row="5"
+                Grid.Column="0"
+                Grid.ColumnSpan="2"
+                Margin="5,20,5,5"
+                WidthRequest="300"
+                HeightRequest="50"
+                BackgroundColor="LightBlue"
+                CornerRadius="25"
+                Text="PURCHASE"/>
+
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

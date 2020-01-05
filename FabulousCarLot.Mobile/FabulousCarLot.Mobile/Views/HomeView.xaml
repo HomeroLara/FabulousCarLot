@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:cells="clr-namespace:FabulousCarLot.Mobile.Views.ViewCells"
+             mc:Ignorable="d"
+             x:Class="FabulousCarLot.Mobile.Views.HomeView">
+    
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Color x:Key="Primary">#2196F3</Color>
+            <Color x:Key="Accent">#96d1ff</Color>
+            <Color x:Key="TextColor">#000000</Color>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
+    <ContentPage.Content>
+        <ListView
+            x:Name="listViewVehicles"
+            SelectionMode="Single"
+            ItemSelected="listViewVehicles_ItemSelected"
+            Margin="10,20,10,0"
+            ItemsSource="{Binding Vehicles}"
+            HasUnevenRows="True"
+            RefreshCommand="{Binding RefreshCommand}"
+            IsPullToRefreshEnabled="True"
+            IsRefreshing="{Binding IsRefreshing}"
+            RefreshControlColor="Red"
+            VerticalOptions="StartAndExpand"
+            HorizontalOptions="CenterAndExpand">
+            
+            <ListView.Header>
+                <StackLayout
+                    BackgroundColor="LightBlue"
+                        Orientation="Vertical"
+                        HeightRequest="150"
+                        HorizontalOptions="FillAndExpand">
+                    
+                    <Label
+                        FontSize="20"
+                        FontAttributes="Bold"
+                        TextColor="{DynamicResource TextColor}"
+                        Text="Welcome to Fabulos Car Lot!"
+                        HorizontalOptions="CenterAndExpand"
+                        VerticalOptions="CenterAndExpand"/>
+
+                    <ActivityIndicator
+                        IsRunning="{Binding IsBusy}"
+                        IsVisible="{Binding IsBusy}"
+                        HeightRequest="50"
+                        WidthRequest="50"
+                        Color="Red"/>
+                </StackLayout>
+            </ListView.Header>
+
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <cells:VehicleViewCell/>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+            
+        </ListView>
+    </ContentPage.Content>
+</ContentPage>
