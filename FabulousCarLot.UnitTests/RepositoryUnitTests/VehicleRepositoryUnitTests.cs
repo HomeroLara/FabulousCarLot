@@ -20,13 +20,13 @@ namespace FabulousCarLot.UnitTests.RepositoryUnitTests
 
         #region FACTS
         [Fact(DisplayName = "Get All Vehicles")]
-        public async Task GetAllVehicleUnitTest()
+        public async Task GetAllVehiclesUnitTest()
         {
             //arrange
             var vehicleRepository = new Mock<IVehicleRepository>();
             vehicleRepository
                 .Setup(v => v.GetVehicles())
-                .Returns(async () => await GetVehicles());
+                .Returns(Task.FromResult(await GetVehicles()));
 
             //act
             var vehicles = await vehicleRepository.Object.GetVehicles();
